@@ -1,0 +1,16 @@
+<h3>Cursos disponibles</h3>
+
+<div class="card" style="width: 18rem;" *ngFor="let curso of cursos">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{curso.nombre | uppercase}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted"> Impartido por {{curso.profesor}}</h6>
+    <p class="card-text">
+      <span *ngIf="curso.estudiantes.length > 0">Estudiantes: {{curso.estudiantes}}</span>
+      <span *ngIf="curso.estudiantes.length === 0">Sin estudiantes inscriptos: {{curso.estudiantes}}</span>
+    </p>
+    <a href="#" class="btn btn-primary" *ngIf="curso.inscripcionAbierta">Inscribirse</a>
+   <!--  <a href="#" class="card-link">{{curso.inscripcionAbierta ? 'Inscribirse' : 'Cerrado'}}</a> -->
+
+  </div>
+</div>
