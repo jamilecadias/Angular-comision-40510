@@ -1,1 +1,11 @@
-<p>lista-alumnos works!</p>
+<h1>lista de alumnos</h1>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active" aria-current="true" *ngFor="let alumnos of alumnos">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{alumnos.nombre | uppercase}}</h5>
+      <small *ngIf="alumnos.activo === true">Activo</small>
+      <small *ngIf="alumnos.activo === false">Inactivo</small>
+    </div>
+    <p class="mb-1">Curso: {{alumnos.curso}}</p>
+    <small>Nivel: {{alumnos.nivel}}</small>
+
