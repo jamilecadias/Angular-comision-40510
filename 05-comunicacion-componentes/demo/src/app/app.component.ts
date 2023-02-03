@@ -12,6 +12,9 @@ export class AppComponent {
     { nombre: 'Gabriela', curso: 'Angular', activo: true, notaMedia: 2.2 },
     { nombre: 'Mizraim', curso: 'React', activo: false, notaMedia: 4.2 },
     { nombre: 'Pablo', curso: 'React', activo: true, notaMedia: 9.2 },
-
   ];
+
+  agregarEstudiante(estudiante: Estudiante){
+    this.estudiantes.push(estudiante);
+  }
 }
