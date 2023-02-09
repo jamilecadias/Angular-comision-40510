@@ -1,0 +1,7 @@
+<div class="grid-container">
+  <app-toolbar class="header"></app-toolbar>
+  <app-navbar class="menu"></app-navbar>
+  /* <app-content class="content"></app-content> */
+/*   <app-info class="info"></app-info> */
+  <app-footer class="footer"></app-footer>
+</div>
