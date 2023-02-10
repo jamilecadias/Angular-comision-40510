@@ -1,23 +1,34 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Estudiante } from 'src/app/models/estudiante';
+import { ComponenteHijoComponent } from '../componente-hijo/componente-hijo.component';
 
-import { ComponentePadreComponent } from './componente-padre.component';
+@Component({
+  selector: 'app-componente-padre',
+  templateUrl: './componente-padre.component.html',
+  styleUrls: ['./componente-padre.component.css']
+})
+export class ComponentePadreComponent implements AfterViewInit, OnInit {
+  @Input() estudiantesPadre!: Estudiante[];
+  @Output() eventoSalidaPadre: EventEmitter<Estudiante> = new EventEmitter<Estudiante>();
+  @ViewChild('mensaje') mensajePruebaRef!: ElementRef;
+  @ViewChild(ComponenteHijoComponent) hijoComponent!: ComponenteHijoComponent;
 
-describe('ComponentePadreComponent', () => {
-  let component: ComponentePadreComponent;
-  let fixture: ComponentFixture<ComponentePadreComponent>;
+  constructor(){
+    console.log('Ejecutado desde el constructor', this.mensajePruebaRef, this.hijoComponent);
+  }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ ComponentePadreComponent ]
-    })
-    .compileComponents();
+  ngOnInit(): void {
+    console.log('Ejecutado desde el ngOnInit', this.mensajePruebaRef, this.hijoComponent);
+  }
 
-    fixture = TestBed.createComponent(ComponentePadreComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  ngAfterViewInit(): void {
+    this.mensajePruebaRef.nativeElement.textContent = 'Texto cambiado';
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    console.log('Ejecutado desde el ngAfterViewInit', this.mensajePruebaRef.nativeElement, this.hijoComponent);
+  }
+
+  actualizarEstudiantesPadre(estudiante: Estudiante){
+    console.log("Estoy agregando un usuario desde app-componente-padre", estudiante);
+    this.eventoSalidaPadre.emit(estudiante);
+  }
+}

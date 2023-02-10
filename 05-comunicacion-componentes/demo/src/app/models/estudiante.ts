@@ -1,6 +1,5 @@
 export interface Estudiante{
-  nombre: string;
-  curso: string;
-  activo: boolean;
-  notaMedia: number;
+    nombre: string;
+    edad: number;
+    estaActivo: boolean;
 }
