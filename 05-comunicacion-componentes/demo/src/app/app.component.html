@@ -1,4 +1,2 @@
-<h1>Hola mundo</h1>
-<app-componente-padre [estudiantesPadre]="estudiantes"></app-componente-padre>
-
-
+<h1>Hola Mundo</h1>
+<app-componente-padre [estudiantesPadre]="estudiantes" (eventoSalidaPadre)="agregarEstudiante($event)"></app-componente-padre>
